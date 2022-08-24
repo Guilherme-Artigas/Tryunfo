@@ -1,0 +1,6 @@
+npm test 01.Form.test.js
+npm test 02.FormProps.test.js
+npm test 03.CreateCard.test.js
+npm test 04.PreviewCard.test.js
+npm test 05.ValidateSaveButton.test.js
+npm test 06.SaveButton.test.js

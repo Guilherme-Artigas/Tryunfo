@@ -84,7 +84,7 @@ class Form extends React.Component {
             id="imgId"
             type="text"
             name="cardImage"
-            placeholder="Link da imagem da carta"
+            placeholder="Link da imagem"
             data-testid="image-input"
             value={ cardImage }
             onChange={ onInputChange }
