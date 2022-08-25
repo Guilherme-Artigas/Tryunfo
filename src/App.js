@@ -18,13 +18,13 @@ class App extends React.Component {
     onSaveButtonClick: () => {
       const { cardName, cardDescription, cardImage, cardRare, cardAttr1, cardAttr2,
         cardAttr3 } = this.state;
-      const lista = [{ cardName,
+      const lista = { cardName,
         cardDescription,
         cardImage,
         cardRare,
         cardAttr1,
         cardAttr2,
-        cardAttr3 }];
+        cardAttr3 };
       this.setState((estadoAnterior) => ({
         savedCards: [...estadoAnterior.savedCards, lista],
         cardName: '',
@@ -91,7 +91,6 @@ class App extends React.Component {
           cardRare={ cardRare }
           cardTrunfo={ cardTrunfo }
           hasTrunfo={ hasTrunfo }
-          savedCards={ savedCards }
           isSaveButtonDisabled={ isSaveButtonDisabled }
           onSaveButtonClick={ onSaveButtonClick }
         />
@@ -105,6 +104,19 @@ class App extends React.Component {
           cardRare={ cardRare }
           cardTrunfo={ cardTrunfo }
         />
+        {savedCards.map((e, i) => (
+          <Card
+            key={ i }
+            cardName={ e.cardName }
+            cardDescription={ e.cardDescription }
+            cardImage={ e.cardImage }
+            cardAttr1={ e.cardAttr1 }
+            cardAttr2={ e.cardAttr2 }
+            cardAttr3={ e.cardAttr3 }
+            cardRare={ e.cardRare }
+            cardTrunfo={ e.cardTrunfo }
+          />
+        ))}
       </>
     );
   }

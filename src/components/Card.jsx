@@ -5,6 +5,7 @@ class Card extends React.Component {
   render() {
     const { cardName, cardDescription, cardAttr1, cardAttr2, cardAttr3, cardImage,
       cardRare, cardTrunfo } = this.props;
+
     return (
       <section>
         <p data-testid="name-card">{cardName}</p>
@@ -30,7 +31,11 @@ Card.propTypes = {
   cardAttr3: PropTypes.string.isRequired,
   cardImage: PropTypes.string.isRequired,
   cardRare: PropTypes.string.isRequired,
-  cardTrunfo: PropTypes.bool.isRequired,
+  cardTrunfo: PropTypes.bool,
+};
+
+Card.defaultProps = {
+  cardTrunfo: false,
 };
 
 export default Card;
