@@ -12,6 +12,7 @@ class App extends React.Component {
     cardAttr3: '',
     cardRare: 'normal',
     cardTrunfo: false,
+    hasTrunfo: false,
     isSaveButtonDisabled: true,
     savedCards: [],
     onSaveButtonClick: () => {
@@ -45,7 +46,7 @@ class App extends React.Component {
       [name]: value,
     }, () => {
       const { cardName, cardDescription, cardImage, cardAttr1, cardAttr2,
-        cardAttr3, cardRare } = this.state;
+        cardAttr3, cardRare, cardTrunfo } = this.state;
 
       if (cardName !== ''
         && cardDescription !== ''
@@ -66,15 +67,17 @@ class App extends React.Component {
       } else {
         this.setState({ isSaveButtonDisabled: true });
       }
+      if (cardTrunfo === true) {
+        this.setState({ hasTrunfo: true });
+      }
     });
   };
 
   render() {
     const { cardName, cardDescription, cardImage, cardAttr1, cardAttr2,
       cardAttr3, cardRare, cardTrunfo, isSaveButtonDisabled,
-      onSaveButtonClick, savedCards } = this.state;
+      onSaveButtonClick, savedCards, hasTrunfo } = this.state;
 
-    console.log(savedCards);
     return (
       <>
         <Form
@@ -87,6 +90,8 @@ class App extends React.Component {
           cardAttr3={ cardAttr3 }
           cardRare={ cardRare }
           cardTrunfo={ cardTrunfo }
+          hasTrunfo={ hasTrunfo }
+          savedCards={ savedCards }
           isSaveButtonDisabled={ isSaveButtonDisabled }
           onSaveButtonClick={ onSaveButtonClick }
         />
@@ -106,39 +111,3 @@ class App extends React.Component {
 }
 
 export default App;
-
-// e.target.form[0].value = '';
-// e.target.form[1].value = '';
-// e.target.form[5].value = '';
-// e.target.form[2].value = '0';
-// e.target.form[3].value = '0';
-// e.target.form[4].value = '0';
-// e.target.form[6].value = 'normal';
-// const { cardName, cardDescription, cardImage, cardRare, cardAttr1, cardAttr2,
-//   cardAttr3 } = this.state;
-// cardName = '';
-// 0: input#cardNameId
-// 1: textarea#textAreaId
-// 2: input#attrId1
-// 3: input#attrId2
-// 4: input#attrId3
-// 5: input#imgId
-// 6: select#selectId
-// 7: input#checkId
-// const teste = e;
-// teste.target.form[0].value = '';
-// console.log(teste);
-// console.log(this.state);
-
-// onSaveButtonClick: () => {
-//   const { cardName, cardDescription, cardImage, cardRare, cardAttr1, cardAttr2,
-//     cardAttr3 } = this.state;
-//   const lista = [{ cardName,
-//     cardDescription,
-//     cardImage,
-//     cardRare,
-//     cardAttr1,
-//     cardAttr2,
-//     cardAttr3 }];
-//   this.setState({ savedCars: [...lista] }, () => console.log(this.state));
-// },
