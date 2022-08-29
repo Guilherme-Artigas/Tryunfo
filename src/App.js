@@ -84,6 +84,13 @@ class App extends React.Component {
     this.setState({ savedCards: list });
   };
 
+  busca = ({ target }) => {
+    const { value } = target;
+    const { savedCards } = this.state;
+    const lista = savedCards.filter((e) => e.cardName.includes(value));
+    console.log(lista);
+  };
+
   render() {
     const { cardName, cardDescription, cardImage, cardAttr1, cardAttr2,
       cardAttr3, cardRare, cardTrunfo, isSaveButtonDisabled,
@@ -137,6 +144,10 @@ class App extends React.Component {
             </button>
           </div>
         ))}
+        <input
+          data-testid="name-filter"
+          onChange={ this.busca }
+        />
       </>
     );
   }

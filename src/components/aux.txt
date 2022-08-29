@@ -6,4 +6,5 @@ npm test 05.ValidateSaveButton.test.js
 npm test 06.SaveButton.test.js
 npm test 07.Trunfo.test.js
 npm test 08.CardList.test.js
-npm test 09.DeleteCard.test.js working
+npm test 09.DeleteCard.test.js
+npm test 10.NameFilter.test.js working
