@@ -1,0 +1,67 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.registerLetter {
+  border: 1px solid black;
+  font-family: Trebuchet MS , Lucida Sans Unicode , Lucida Sans , Arial , sans-serif;
+  margin: 50px 10px 0 100px;
+  padding: 10px;
+  width: 40%;
+}
+
+.registerLetter h1 {
+  margin: 50px 0;
+}
+
+.registerLetter label input {
+  margin: 10px 0;
+  padding: 5px;
+  width: 100%;
+}
+
+.registerLetter textarea {
+  resize: none;
+  width: 100%;
+}
+
+.registerLetter label select {
+  border: none;
+  margin: 0 100px 0 10px;
+  padding: 5px;
+}
+
+.attributes {
+  margin: 50px 0;
+  width: 50%;
+}
+
+.registerLetter label .superTrunfo {
+  width: 10%;
+}
+
+.btn-salvar {
+  background: dodgerblue;
+  border: none;
+  border-radius: 2px;
+  color: white;
+  margin: 30px 0 10px;
+  padding: 10px;
+  width: 100px;
+}
+
+.btn-salvar:disabled {
+  background: lightgray;
+  border: none;
+  border-radius: 2px;
+  color: white;
+  margin: 30px 0 10px;
+  padding: 10px;
+  width: 100px;
+}
+
+.warning {
+  margin: 10px 0 0;
+}

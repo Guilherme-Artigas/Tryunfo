@@ -2,6 +2,7 @@ import React from 'react';
 import Form from './components/Form';
 import Card from './components/Card';
 import './App.css';
+import './components/css/Card.css';
 
 class App extends React.Component {
   state = {
@@ -16,9 +17,12 @@ class App extends React.Component {
     hasTrunfo: false,
     isSaveButtonDisabled: true,
     savedCards: [],
+    // filtros: [],
     onSaveButtonClick: () => {
       const { cardName, cardDescription, cardImage, cardRare, cardAttr1, cardAttr2,
-        cardAttr3, hasTrunfo } = this.state;
+        cardAttr3, cardTrunfo } = this.state;
+      if (cardTrunfo) this.setState({ cardTrunfo: false });
+
       const lista = { cardName,
         cardDescription,
         cardImage,
@@ -26,7 +30,7 @@ class App extends React.Component {
         cardAttr1,
         cardAttr2,
         cardAttr3,
-        hasTrunfo };
+        cardTrunfo };
       this.setState((estadoAnterior) => ({
         savedCards: [...estadoAnterior.savedCards, lista],
         cardName: '',
@@ -75,79 +79,129 @@ class App extends React.Component {
     });
   };
 
-  delleteCard = (card, indice) => {
-    const { savedCards, hasTrunfo } = this.state;
-    if (hasTrunfo === true) {
-      this.setState({ hasTrunfo: false });
-    }
-    const list = savedCards.filter((e, i) => i !== indice);
-    this.setState({ savedCards: list });
+  delleteCard = (card) => {
+    const { savedCards } = this.state;
+    const newList = savedCards.filter((e) => e.cardName !== card);
+    this.setState({ savedCards: newList });
+    const trunfo = newList.some((e) => e.cardTrunfo === true);
+    if (!trunfo) this.setState({ hasTrunfo: false });
   };
 
-  busca = ({ target }) => {
-    const { value } = target;
+  searchField = ({ target: { value } }) => {
     const { savedCards } = this.state;
-    const lista = savedCards.filter((e) => e.cardName.includes(value));
-    console.log(lista);
+    const filtered = savedCards.filter((e) => e.cardName.includes(value));
+    if (value !== '') {
+      // this.setState({ filtros: filtered });
+    }
+    // se value !== '' e filtered retornar vazio, eu não posso exibir nada na tela
+
+    console.log(filtered);
   };
 
   render() {
-    const { cardName, cardDescription, cardImage, cardAttr1, cardAttr2,
-      cardAttr3, cardRare, cardTrunfo, isSaveButtonDisabled,
-      onSaveButtonClick, savedCards, hasTrunfo } = this.state;
+    const {
+      cardName,
+      cardDescription,
+      cardAttr1,
+      cardAttr2,
+      cardAttr3,
+      cardImage,
+      cardRare,
+      cardTrunfo,
+      hasTrunfo,
+      isSaveButtonDisabled,
+      onSaveButtonClick,
+      savedCards,
+      /* filtros */ } = this.state;
 
     return (
       <>
-        <Form
-          onInputChange={ this.handle }
-          cardName={ cardName }
-          cardDescription={ cardDescription }
-          cardImage={ cardImage }
-          cardAttr1={ cardAttr1 }
-          cardAttr2={ cardAttr2 }
-          cardAttr3={ cardAttr3 }
-          cardRare={ cardRare }
-          cardTrunfo={ cardTrunfo }
-          hasTrunfo={ hasTrunfo }
-          isSaveButtonDisabled={ isSaveButtonDisabled }
-          onSaveButtonClick={ onSaveButtonClick }
-        />
-        <Card
-          cardName={ cardName }
-          cardDescription={ cardDescription }
-          cardImage={ cardImage }
-          cardAttr1={ cardAttr1 }
-          cardAttr2={ cardAttr2 }
-          cardAttr3={ cardAttr3 }
-          cardRare={ cardRare }
-          cardTrunfo={ cardTrunfo }
-        />
-        {savedCards.map((e, i) => (
-          <div key={ i } className="cards">
-            <Card
-              key={ i }
-              cardName={ e.cardName }
-              cardDescription={ e.cardDescription }
-              cardImage={ e.cardImage }
-              cardAttr1={ e.cardAttr1 }
-              cardAttr2={ e.cardAttr2 }
-              cardAttr3={ e.cardAttr3 }
-              cardRare={ e.cardRare }
-              cardTrunfo={ e.cardTrunfo }
+        <section className="registrationAndViewing">
+          <Form
+            onInputChange={ this.handle }
+            cardName={ cardName }
+            cardDescription={ cardDescription }
+            cardImage={ cardImage }
+            cardAttr1={ cardAttr1 }
+            cardAttr2={ cardAttr2 }
+            cardAttr3={ cardAttr3 }
+            cardRare={ cardRare }
+            cardTrunfo={ cardTrunfo }
+            hasTrunfo={ hasTrunfo }
+            isSaveButtonDisabled={ isSaveButtonDisabled }
+            onSaveButtonClick={ onSaveButtonClick }
+          />
+          <Card
+            cardName={ cardName }
+            cardDescription={ cardDescription }
+            cardImage={ cardImage }
+            cardAttr1={ cardAttr1 }
+            cardAttr2={ cardAttr2 }
+            cardAttr3={ cardAttr3 }
+            cardRare={ cardRare }
+            cardTrunfo={ cardTrunfo }
+          />
+        </section>
+        <section className="searchField">
+          <label htmlFor="searchField">
+            Filtros de Busca:
+            <br />
+            <input
+              data-testid="name-filter"
+              onChange={ this.searchField }
             />
-            <button
-              type="button"
-              onClick={ () => this.delleteCard(e, i) }
-              data-testid="delete-button"
-            >
-              Excluir
-            </button>
-          </div>
-        ))}
-        <input
-          data-testid="name-filter"
-          onChange={ this.busca }
-        />
+          </label>
+        </section>
+        <section className="listSavedCards">
+          {/* {filtros.length > 0 ? (
+            <ul>
+              {filtros.map((e, i) => (
+                <li key={ `${e}${i}` }>
+                  <Card
+                    cardName={ e.cardName }
+                    cardDescription={ e.cardDescription }
+                    cardImage={ e.cardImage }
+                    cardAttr1={ e.cardAttr1 }
+                    cardAttr2={ e.cardAttr2 }
+                    cardAttr3={ e.cardAttr3 }
+                    cardRare={ e.cardRare }
+                    cardTrunfo={ e.cardTrunfo }
+                  />
+                  <button
+                    type="button"
+                    onClick={ () => this.delleteCard(e.cardName) }
+                    data-testid="delete-button"
+                  >
+                    Excluir
+                  </button>
+                </li>
+              ))}
+            </ul>) : ''} */}
+          {savedCards.length > 0 && (
+            <ul>
+              {savedCards.map((e, i) => (
+                <li key={ `${i}` }>
+                  <Card
+                    cardName={ e.cardName }
+                    cardDescription={ e.cardDescription }
+                    cardImage={ e.cardImage }
+                    cardAttr1={ e.cardAttr1 }
+                    cardAttr2={ e.cardAttr2 }
+                    cardAttr3={ e.cardAttr3 }
+                    cardRare={ e.cardRare }
+                    cardTrunfo={ e.cardTrunfo }
+                  />
+                  <button
+                    type="button"
+                    onClick={ () => this.delleteCard(e.cardName) }
+                    data-testid="delete-button"
+                  >
+                    Excluir
+                  </button>
+                </li>
+              ))}
+            </ul>)}
+        </section>
       </>
     );
   }

@@ -1,0 +1,64 @@
+.previewCard {
+  border: 1px solid black;
+  font-family: Trebuchet MS , Lucida Sans Unicode , Lucida Sans , Arial , sans-serif;
+  margin: 50px 100px 0 10px;
+  padding: 10px;
+  width: 40%;
+}
+
+.previewCard h1 {
+  margin: 50px 0;
+}
+
+.previewCard p {
+  background: lightgrey;
+  margin: 20px 0;
+  padding: 10px;
+}
+
+.previewCard img {
+  display: block;
+  margin: 0 auto;
+}
+
+.listSavedCards {
+  list-style-type: none;
+  margin: 50px;
+}
+
+.listSavedCards ul {
+  display: flex;
+  list-style-type: none;
+}
+
+.listSavedCards li {
+  border: 1px solid black;
+  margin: 5px;
+  position: relative;
+  text-align: center;
+}
+
+.listSavedCards li button {
+  bottom: 0;
+  position: absolute;
+}
+
+.listSavedCards li .previewCard {
+  border: none;
+  margin: 10px;
+  padding: 20px;
+  width: 100%;
+}
+
+.listSavedCards li .previewCard h1 {
+  display: none;
+}
+
+.listSavedCards li .previewCard p {
+  margin: 5px 0;
+  padding: 5px;
+}
+
+.listSavedCards li .previewCard img {
+  width: 100px;
+}

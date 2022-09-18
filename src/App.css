@@ -1,7 +1,12 @@
-.cardFather {
-  list-style-type: none;
+.registrationAndViewing {
+  display: flex;
 }
 
-.cards {
-  border: 1px solid black;
+.searchField {
+  padding: 50px 0;
+}
+
+.searchField label {
+  display: block;
+  margin: 0 100px;
 }
