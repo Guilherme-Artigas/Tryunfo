@@ -17,7 +17,8 @@ class App extends React.Component {
     hasTrunfo: false,
     isSaveButtonDisabled: true,
     savedCards: [],
-    // filtros: [],
+    filterByName: [],
+    controlsFilter: false,
     onSaveButtonClick: () => {
       const { cardName, cardDescription, cardImage, cardRare, cardAttr1, cardAttr2,
         cardAttr3, cardTrunfo } = this.state;
@@ -89,13 +90,12 @@ class App extends React.Component {
 
   searchField = ({ target: { value } }) => {
     const { savedCards } = this.state;
-    const filtered = savedCards.filter((e) => e.cardName.includes(value));
     if (value !== '') {
-      // this.setState({ filtros: filtered });
+      const filtered = savedCards.filter((e) => e.cardName.includes(value));
+      this.setState({ controlsFilter: true, filterByName: filtered });
+    } else {
+      this.setState({ filterByName: savedCards });
     }
-    // se value !== '' e filtered retornar vazio, eu não posso exibir nada na tela
-
-    console.log(filtered);
   };
 
   render() {
@@ -112,7 +112,8 @@ class App extends React.Component {
       isSaveButtonDisabled,
       onSaveButtonClick,
       savedCards,
-      /* filtros */ } = this.state;
+      filterByName,
+      controlsFilter } = this.state;
 
     return (
       <>
@@ -153,9 +154,9 @@ class App extends React.Component {
           </label>
         </section>
         <section className="listSavedCards">
-          {/* {filtros.length > 0 ? (
+          {controlsFilter ? (
             <ul>
-              {filtros.map((e, i) => (
+              {filterByName.map((e, i) => (
                 <li key={ `${e}${i}` }>
                   <Card
                     cardName={ e.cardName }
@@ -176,8 +177,8 @@ class App extends React.Component {
                   </button>
                 </li>
               ))}
-            </ul>) : ''} */}
-          {savedCards.length > 0 && (
+            </ul>
+          ) : (
             <ul>
               {savedCards.map((e, i) => (
                 <li key={ `${i}` }>
@@ -200,7 +201,8 @@ class App extends React.Component {
                   </button>
                 </li>
               ))}
-            </ul>)}
+            </ul>
+          )}
         </section>
       </>
     );

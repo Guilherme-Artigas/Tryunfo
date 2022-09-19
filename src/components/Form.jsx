@@ -36,7 +36,7 @@ class Form extends React.Component {
           Descrição:
           <textarea
             cols="30"
-            rows="5"
+            rows="2"
             data-testid="description-input"
             name="cardDescription"
             value={ cardDescription }
