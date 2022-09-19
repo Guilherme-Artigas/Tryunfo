@@ -3,10 +3,20 @@
 }
 
 .searchField {
+  display: flex;
   padding: 50px 0;
 }
 
 .searchField label {
+  align-self: flex-end;
   display: block;
-  margin: 0 100px;
+  margin: 0 50px 0 100px;
+}
+
+.searchField label input {
+  padding: 5px;
+}
+
+.searchField label select {
+  padding: 5px;
 }

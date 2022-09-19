@@ -17,7 +17,7 @@ class App extends React.Component {
     hasTrunfo: false,
     isSaveButtonDisabled: true,
     savedCards: [],
-    filterByName: [],
+    filterBy: [],
     controlsFilter: false,
     onSaveButtonClick: () => {
       const { cardName, cardDescription, cardImage, cardRare, cardAttr1, cardAttr2,
@@ -90,11 +90,18 @@ class App extends React.Component {
 
   searchField = ({ target: { value } }) => {
     const { savedCards } = this.state;
-    if (value !== '') {
-      const filtered = savedCards.filter((e) => e.cardName.includes(value));
-      this.setState({ controlsFilter: true, filterByName: filtered });
+    if (value !== '' && value !== 'todas') {
+      this.setState({ filterBy: [] });
+      const byName = savedCards.filter((e) => e.cardName.includes(value));
+      const byRare = savedCards.filter((e) => e.cardRare === value);
+      if (byRare.length > 0) {
+        this.setState({ controlsFilter: true, filterBy: byRare });
+      } else {
+        this.setState({ controlsFilter: true, filterBy: byRare });
+      }
+      if (byName.length > 0) this.setState({ controlsFilter: true, filterBy: byName });
     } else {
-      this.setState({ filterByName: savedCards });
+      this.setState({ filterBy: savedCards });
     }
   };
 
@@ -112,7 +119,7 @@ class App extends React.Component {
       isSaveButtonDisabled,
       onSaveButtonClick,
       savedCards,
-      filterByName,
+      filterBy,
       controlsFilter } = this.state;
 
     return (
@@ -144,7 +151,7 @@ class App extends React.Component {
           />
         </section>
         <section className="searchField">
-          <label htmlFor="searchField">
+          <label htmlFor="searchByName">
             Filtros de Busca:
             <br />
             <input
@@ -152,11 +159,22 @@ class App extends React.Component {
               onChange={ this.searchField }
             />
           </label>
+          <label htmlFor="searchByRarity">
+            <select
+              data-testid="rare-filter"
+              onChange={ this.searchField }
+            >
+              <option value="todas">Todas</option>
+              <option value="normal">Normal</option>
+              <option value="raro">Raro</option>
+              <option value="muito raro">Muito Raro</option>
+            </select>
+          </label>
         </section>
         <section className="listSavedCards">
           {controlsFilter ? (
             <ul>
-              {filterByName.map((e, i) => (
+              {filterBy.map((e, i) => (
                 <li key={ `${e}${i}` }>
                   <Card
                     cardName={ e.cardName }
