@@ -88,7 +88,8 @@ class App extends React.Component {
     if (!trunfo) this.setState({ hasTrunfo: false });
   };
 
-  searchField = ({ target: { value } }) => {
+  searchField = ({ target }) => {
+    const { value } = target;
     const { savedCards } = this.state;
     if (value !== '' && value !== 'todas') {
       this.setState({ filterBy: [] });
@@ -102,6 +103,10 @@ class App extends React.Component {
       if (byName.length > 0) this.setState({ controlsFilter: true, filterBy: byName });
     } else {
       this.setState({ filterBy: savedCards });
+    }
+    if (target.checked) {
+      const T = savedCards.filter((e) => e.cardTrunfo === true);
+      this.setState({ controlsFilter: true, filterBy: T });
     }
   };
 
@@ -150,25 +155,37 @@ class App extends React.Component {
             cardTrunfo={ cardTrunfo }
           />
         </section>
+        <h2 className="filters">Filtros de Busca:</h2>
         <section className="searchField">
           <label htmlFor="searchByName">
-            Filtros de Busca:
-            <br />
             <input
               data-testid="name-filter"
+              placeholder="Busca por nome"
               onChange={ this.searchField }
+              disabled={ controlsFilter }
             />
           </label>
           <label htmlFor="searchByRarity">
+            Busca por raridade:
+            <br />
             <select
               data-testid="rare-filter"
               onChange={ this.searchField }
+              disabled={ controlsFilter }
             >
               <option value="todas">Todas</option>
               <option value="normal">Normal</option>
               <option value="raro">Raro</option>
               <option value="muito raro">Muito Raro</option>
             </select>
+          </label>
+          <label htmlFor="searchByTrunfo">
+            Super Trunfo
+            <input
+              type="checkbox"
+              data-testid="trunfo-filter"
+              onClick={ this.searchField }
+            />
           </label>
         </section>
         <section className="listSavedCards">

@@ -4,7 +4,13 @@
 
 .searchField {
   display: flex;
-  padding: 50px 0;
+  padding: 10px 0;
+}
+
+.filters {
+  font-family: Courier New , Courier , monospace;
+  margin: 20px 0;
+  text-align: center;
 }
 
 .searchField label {
@@ -14,9 +20,11 @@
 }
 
 .searchField label input {
+  margin: 0 10px;
   padding: 5px;
 }
 
 .searchField label select {
   padding: 5px;
+  width: 130px;
 }
