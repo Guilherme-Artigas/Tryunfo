@@ -17,6 +17,16 @@ Aprendei um conceito fundamental de **React** que permite que aplicações sejam
 4. Lógica de validação no botão de salvar as cartas e na carta de super trunfo. ♟️
 5. Lógica de filtros para buscar as cartas ja cadastradas. 🔍
 
+- Cadastrando cartas:
+  - Os campos Nome, Descrição, Imagem e Raridade devem conter alguma informação (ou seja, os inputs não podem estar vazios).
+  Nome: Pikachu <br />
+  Descrição: Elétrico <br />
+  Raridade: Normal <br />
+  Imagem: https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTBaKDUoHX-7hE4W2ym9kD7Q6O1eP16KLgaYQ&usqp=CAU
+  - A soma dos valores dos 3 atributos (attr1, attr2 e attr3) não pode ultrapassar o valor 210.
+  - Cada um dos três atributos pode ter no máximo 90 pontos cada.
+  - Os atributos não podem receber valores negativos.
+
 #### Link para acessar o projeto 🔗
 
 - https://guilherme-artigas.github.io/Tryunfo/
