@@ -27,6 +27,11 @@ Aprendei um conceito fundamental de **React** que permite que aplicações sejam
   - Cada um dos três atributos pode ter no máximo 90 pontos cada.
   - Os atributos não podem receber valores negativos.
 
+## Tecnologias utilizadas no desenvolvimento 🦾
+
+![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
+<br />
+
 #### Link para acessar o projeto 🔗
 
 - https://guilherme-artigas.github.io/Tryunfo/
