@@ -22,18 +22,20 @@ Aprendei um conceito fundamental de **React** que permite que aplicações sejam
   Nome: Pikachu <br />
   Descrição: Elétrico <br />
   Raridade: Normal <br />
-  Imagem: https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTBaKDUoHX-7hE4W2ym9kD7Q6O1eP16KLgaYQ&usqp=CAU
+  Imagem: [imagem Pikachu](https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTBaKDUoHX-7hE4W2ym9kD7Q6O1eP16KLgaYQ&usqp=CAU)
   - A soma dos valores dos 3 atributos (attr1, attr2 e attr3) não pode ultrapassar o valor 210.
   - Cada um dos três atributos pode ter no máximo 90 pontos cada.
   - Os atributos não podem receber valores negativos.
 
-## Tecnologias utilizadas no desenvolvimento 🦾
+## Tecnologias utilizadas... 🦾
+
+![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white) ![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white) ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
+
+## Bibliotecas utilizadas... 🪛
 
 ![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
 <br />
 
-#### Link para acessar o projeto 🔗
-
-- https://guilherme-artigas.github.io/Tryunfo/
+#### [Link](https://tryunfo-sigma.vercel.app/) para acessar o projeto 🔗
 
 Obrigado por visitar! ❤️
